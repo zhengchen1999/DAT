@@ -16,9 +16,9 @@ python setup.py develop
 
 ## Test
 
-- Download the pre-trained [models](https://ufile.io/4u0ms0h5) and place them in `experiments/pretrained_models/`.
+- Download the pre-trained [models](https://ufile.io/rf58x0s9) and place them in `experiments/pretrained_models/`.
 
-  We provide all models: DAT, DAT-L, and DAT-2 (x2, x3, x4).
+  We provide DAT with scale factors: x2, x3, x4.
 
 - Download [testing](https://ufile.io/6ek67nf8) (Set5, Set14, BSD100, Urban100, Manga109) datasets, place them in `datasets/`.
 
@@ -32,18 +32,8 @@ python setup.py develop
   python basicsr/test.py -opt options/Test/test_DAT_x2.yml
   python basicsr/test.py -opt options/Test/test_DAT_x3.yml
   python basicsr/test.py -opt options/Test/test_DAT_x3.yml
-  
-  # DAT-L, reproduces results in Table 2 of the main paper
-  python basicsr/test.py -opt options/Test/test_DAT_L_x2.yml
-  python basicsr/test.py -opt options/Test/test_DAT_L_x3.yml
-  python basicsr/test.py -opt options/Test/test_DAT_L_x3.yml
-  
-  # DAT-L, reproduces results in Table 1 of the supplementary material
-  python basicsr/test.py -opt options/Test/test_DAT_2_x2.yml
-  python basicsr/test.py -opt options/Test/test_DAT_2_x3.yml
-  python basicsr/test.py -opt options/Test/test_DAT_2_x3.yml
   ```
-
+  
 - The output is in `results`.
 
 ## Acknowledgements
