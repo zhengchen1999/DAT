@@ -5,7 +5,7 @@ This repository is for DAT introduced in the paper.
 ## Dependencies
 
 - Python 3.8
-- pytorch >= 1.8.0
+- PyTorch 1.8.0
 - NVIDIA GPU + [CUDA](https://developer.nvidia.com/cuda-downloads)
 
 ```bash
