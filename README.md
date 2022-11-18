@@ -14,11 +14,6 @@ pip install -r requirements.txt
 python setup.py develop
 ```
 
-## TODO
-
-* [x] Classic Image SR
-* [ ] More Image SR: Lightweight Image SR, Blind Image SR, Real-World Image SR, ...
-
 ## Test
 
 - Download the pre-trained [models](https://ufile.io/4u0ms0h5) and place them in `experiments/pretrained_models/`.
