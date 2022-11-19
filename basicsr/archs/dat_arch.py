@@ -137,8 +137,8 @@ class Spatial_Attention(nn.Module):
     It supports rectangle window (containing square window).
     Args:
         dim (int): Number of input channels.
-        idx (int): The indentix of different shape window.
-        split_size (tuple(int)): Height or Width of spatial window.
+        idx (int): The indentix of window. (0/1)
+        split_size (tuple(int)): Height and Width of spatial window.
         dim_out (int | None): The dimension of the attention output. Default: None
         num_heads (int): Number of attention heads. Default: 6
         attn_drop (float): Dropout ratio of attention weight. Default: 0.0
@@ -581,7 +581,7 @@ class ResidualGroup(nn.Module):
         drop_paths (float | None): Stochastic depth rate.
         act_layer (nn.Module): Activation layer. Default: nn.GELU
         norm_layer (nn.Module): Normalization layer. Default: nn.LayerNorm
-        depth (int): Number of Cross Aggregation Transformer blocks in residual group.
+        depth (int): Number of dual aggregation Transformer blocks in residual group.
         use_chk (bool): Whether to use checkpointing to save memory.
         resi_connection: The convolutional block before residual connection. '1conv'/'3conv'
     """
@@ -692,7 +692,7 @@ class DAT(nn.Module):
         act_layer (nn.Module): Activation layer. Default: nn.GELU
         norm_layer (nn.Module): Normalization layer. Default: nn.LayerNorm
         use_chk (bool): Whether to use checkpointing to save memory.
-        upscale: Upscale factor. 2/3/4/8 for image SR, 1 for compress artifact reduction
+        upscale: Upscale factor. 2/3/4 for image SR
         img_range: Image range. 1. or 255.
         resi_connection: The convolutional block before residual connection. '1conv'/'3conv'
     """
