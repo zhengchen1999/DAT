@@ -31,7 +31,7 @@ python setup.py develop
   # DAT, reproduces results in Table 2 of the main paper
   python basicsr/test.py -opt options/Test/test_DAT_x2.yml
   python basicsr/test.py -opt options/Test/test_DAT_x3.yml
-  python basicsr/test.py -opt options/Test/test_DAT_x3.yml
+  python basicsr/test.py -opt options/Test/test_DAT_x4.yml
   ```
   
 - The output is in `results`.
