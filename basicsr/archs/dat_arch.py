@@ -683,7 +683,7 @@ class DAT(nn.Module):
         depths (tuple(int)): Depth of each residual group (number of DATB in each RG).
         split_size (tuple(int)): Height and Width of spatial window.
         num_heads (tuple(int)): Number of attention heads in different residual groups.
-        mlp_ratio (float): Ratio of mlp hidden dim to embedding dim. Default: 4
+        expansion_factor (float): Ratio of ffn hidden dim to embedding dim. Default: 4
         qkv_bias (bool): If True, add a learnable bias to query, key, value. Default: True
         qk_scale (float | None): Override default qk scale of head_dim ** -0.5 if set. Default: None
         drop_rate (float): Dropout rate. Default: 0
@@ -834,7 +834,7 @@ if __name__ == '__main__':
         depth=[6,6,6,6,6,6],
         embed_dim=180,
         num_heads=[6,6,6,6,6,6],
-        mlp_ratio=2,
+        expansion_factor=2,
         resi_connection='1conv',
         split_size=[8,16],
                 ).cuda().eval()
