@@ -22,7 +22,7 @@ python setup.py develop
 
 - Download [testing](https://ufile.io/6ek67nf8) (Set5, Set14, BSD100, Urban100, Manga109) datasets, place them in `datasets/`.
 
-- Run the folloing scripts. The testing configuration is in `options/Test/`. More detail about YML, please refer to [Configuration](https://github.com/XPixelGroup/BasicSR/blob/master/docs/Config.md).
+- Run the following scripts. The testing configuration is in `options/Test/`. More detail about YML, please refer to [Configuration](https://github.com/XPixelGroup/BasicSR/blob/master/docs/Config.md).
 
   **You can change the testing configuration in YML file, like 'test_DAT_x2.yml'.**
 
