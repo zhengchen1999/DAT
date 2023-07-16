@@ -839,5 +839,9 @@ if __name__ == '__main__':
         split_size=[8,16],
                 ).cuda().eval()
 
+    print(height, width)
+
     x = torch.randn((1, 3, height, width)).cuda()
     x = model(x)
+
+    print(x.shape)
