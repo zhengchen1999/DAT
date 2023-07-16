@@ -112,10 +112,10 @@ The performance is reported on Urban100 (x4, SR). The test input size of FLOPs i
 
 ## Results
 
-We achieved state-of-the-art performance on image SR, JPEG compression artifact reduction and real image denoising. Detailed results can be found in the paper. All visual results of CAT can be downloaded [here](https://drive.google.com/drive/folders/1SIQ342yyrlHTCxINf9wYNchOa5eOw_7s?usp=sharing).
+We achieved state-of-the-art performance. Detailed results can be found in the paper. All visual results of DAT can be downloaded [here](https://drive.google.com/drive/folders/1ZMaZyCer44ZX6tdcDmjIrc_hSsKoMKg2?usp=drive_link).
 
 <details>
-<summary>Image SR (click to expan)</summary>
+<summary>Click to expan</summary>
 
 - results in Table 2 of the main paper
 
