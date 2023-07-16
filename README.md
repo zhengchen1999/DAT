@@ -63,8 +63,6 @@ Download training and testing datasets and put them into the corresponding folde
 
 The performance is reported on Urban100 (x4, SR). The test input size of FLOPs is 128 x 128.
 
-
-
 ## Training
 
 - Download [training](https://drive.google.com/file/d/1TubDkirxl4qAWelfOnpwaSKoj3KLAIG4/view?usp=share_link) (DF2K, already processed) and [testing](https://drive.google.com/file/d/1yMbItvFKVaCT93yPWmlP3883XtJ-wSee/view?usp=sharing) (Set5, Set14, BSD100, Urban100, Manga109, already processed) datasets, place them in `datasets/`.
