@@ -1,5 +1,5 @@
 # general settings
-name: test_DAT_x4
+name: test_DAT_S_x4
 model_type: SRModel
 scale: 4
 num_gpu: 1
@@ -64,16 +64,16 @@ network_g:
   in_chans: 3
   img_size: 64
   img_range: 1.
-  split_size: [8,32]
+  split_size: [8,16]
   depth: [6,6,6,6,6,6]
   embed_dim: 180
   num_heads: [6,6,6,6,6,6]
-  expansion_factor: 4
+  expansion_factor: 2
   resi_connection: '1conv'
 
 # path
 path:
-  pretrain_network_g: experiments/pretrained_models/DAT/DAT_x4.pth
+  pretrain_network_g: experiments/pretrained_models/DAT/DAT_S_x4.pth
   strict_load_g: True
 
 # validation settings

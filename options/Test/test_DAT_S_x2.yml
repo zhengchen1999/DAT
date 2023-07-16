@@ -1,7 +1,7 @@
 # general settings
-name: test_DAT_x4
+name: test_DAT_S_x2
 model_type: SRModel
-scale: 4
+scale: 2
 num_gpu: 1
 manual_seed: 10
 
@@ -11,8 +11,8 @@ datasets:
     name: Set5
     type: PairedImageDataset
     dataroot_gt: datasets/benchmark/Set5/HR
-    dataroot_lq: datasets/benchmark/Set5/LR_bicubic/X4
-    filename_tmpl: '{}x4'
+    dataroot_lq: datasets/benchmark/Set5/LR_bicubic/X2
+    filename_tmpl: '{}x2'
     io_backend:
       type: disk
 
@@ -21,8 +21,8 @@ datasets:
     name: Set14
     type: PairedImageDataset
     dataroot_gt: datasets/benchmark/Set14/HR
-    dataroot_lq: datasets/benchmark/Set14/LR_bicubic/X4
-    filename_tmpl: '{}x4'
+    dataroot_lq: datasets/benchmark/Set14/LR_bicubic/X2
+    filename_tmpl: '{}x2'
     io_backend:
       type: disk
 
@@ -31,8 +31,8 @@ datasets:
     name: B100
     type: PairedImageDataset
     dataroot_gt: datasets/benchmark/B100/HR
-    dataroot_lq: datasets/benchmark/B100/LR_bicubic/X4
-    filename_tmpl: '{}x4'
+    dataroot_lq: datasets/benchmark/B100/LR_bicubic/X2
+    filename_tmpl: '{}x2'
     io_backend:
       type: disk
 
@@ -41,8 +41,8 @@ datasets:
     name: Urban100
     type: PairedImageDataset
     dataroot_gt: datasets/benchmark/Urban100/HR
-    dataroot_lq: datasets/benchmark/Urban100/LR_bicubic/X4
-    filename_tmpl: '{}x4'
+    dataroot_lq: datasets/benchmark/Urban100/LR_bicubic/X2
+    filename_tmpl: '{}x2'
     io_backend:
       type: disk
 
@@ -51,8 +51,8 @@ datasets:
     name: Manga109
     type: PairedImageDataset
     dataroot_gt: datasets/benchmark/Manga109/HR
-    dataroot_lq: datasets/benchmark/Manga109/LR_bicubic/X4
-    filename_tmpl: '{}_LRBI_x4'
+    dataroot_lq: datasets/benchmark/Manga109/LR_bicubic/X2
+    filename_tmpl: '{}_LRBI_x2'
     io_backend:
       type: disk
 
@@ -60,20 +60,20 @@ datasets:
 # network structures
 network_g:
   type: DAT
-  upscale: 4
+  upscale: 2
   in_chans: 3
   img_size: 64
   img_range: 1.
-  split_size: [8,32]
+  split_size: [8,16]
   depth: [6,6,6,6,6,6]
   embed_dim: 180
   num_heads: [6,6,6,6,6,6]
-  expansion_factor: 4
+  expansion_factor: 2
   resi_connection: '1conv'
 
 # path
 path:
-  pretrain_network_g: experiments/pretrained_models/DAT/DAT_x4.pth
+  pretrain_network_g: experiments/pretrained_models/DAT/DAT_S_x2.pth
   strict_load_g: True
 
 # validation settings
@@ -85,9 +85,9 @@ val:
   metrics:
     psnr: # metric name, can be arbitrary
       type: calculate_psnr
-      crop_border: 4
+      crop_border: 2
       test_y_channel: True
     ssim:
       type: calculate_ssim
-      crop_border: 4
+      crop_border: 2
       test_y_channel: True

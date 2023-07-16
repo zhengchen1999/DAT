@@ -64,11 +64,11 @@ network_g:
   in_chans: 3
   img_size: 64
   img_range: 1.
-  split_size: [8,16]
+  split_size: [8,32]
   depth: [6,6,6,6,6,6]
   embed_dim: 180
   num_heads: [6,6,6,6,6,6]
-  expansion_factor: 2
+  expansion_factor: 4
   resi_connection: '1conv'
 
 # path
