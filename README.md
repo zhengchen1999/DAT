@@ -52,7 +52,7 @@ Used training and testing sets can be downloaded as follows:
 | :----------------------------------------------------------- | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/) (800 training images) +  [Flickr2K](https://cv.snu.ac.kr/research/EDSR/Flickr2K.tar) (2650 images) [complete training dataset [DF2K](https://drive.google.com/file/d/1TubDkirxl4qAWelfOnpwaSKoj3KLAIG4/view?usp=share_link)] | Set5 + Set14 + BSD100 + Urban100 + Manga109 [complete testing dataset [download](https://drive.google.com/file/d/1yMbItvFKVaCT93yPWmlP3883XtJ-wSee/view?usp=sharing)] | [here](https://drive.google.com/drive/folders/1ZMaZyCer44ZX6tdcDmjIrc_hSsKoMKg2?usp=drive_link) |
 
-Download training and testing datasets and put them into the corresponding folders of `datasets/` and `restormer/datasets`. See [datasets](datasets/README.md) for the detail of directory structure.
+Download training and testing datasets and put them into the corresponding folders of `datasets/` and `restormer/datasets`. See [datasets](datasets/README.md) for the detail of the directory structure.
 
 ## Models
 
