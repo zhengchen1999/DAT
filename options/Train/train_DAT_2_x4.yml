@@ -1,5 +1,5 @@
 # general settings
-name: test_DAT_x4
+name: test_DAT_2_x4
 model_type: SRModel
 scale: 4
 num_gpu: auto
@@ -50,12 +50,12 @@ network_g:
   depth: [6,6,6,6,6,6]
   embed_dim: 180
   num_heads: [6,6,6,6,6,6]
-  expansion_factor: 4
+  expansion_factor: 2
   resi_connection: '1conv'
 
 # path
 path:
-  pretrain_network_g: experiments/pretrained_models/DAT/DAT_x2.pth # save half of training time if we finetune from x2 and halve initial lr.
+  pretrain_network_g: experiments/pretrained_models/DAT-2/DAT_2_x2.pth # save half of training time if we finetune from x2 and halve initial lr.
   strict_load_g: False
   resume_state: ~
 

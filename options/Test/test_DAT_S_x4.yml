@@ -73,12 +73,12 @@ network_g:
 
 # path
 path:
-  pretrain_network_g: experiments/pretrained_models/DAT/DAT_S_x4.pth
+  pretrain_network_g: experiments/pretrained_models/DAT-S/DAT_S_x4.pth
   strict_load_g: True
 
 # validation settings
 val:
-  save_img: False
+  save_img: True
   suffix: ~  # add suffix to saved images, if None, use exp name
   use_chop: False
 

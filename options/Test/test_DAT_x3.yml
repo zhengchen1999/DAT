@@ -77,7 +77,7 @@ path:
 
 # validation settings
 val:
-  save_img: False
+  save_img: True
   suffix: ~  # add suffix to saved images, if None, use exp name
   use_chop: False
 

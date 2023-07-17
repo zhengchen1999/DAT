@@ -297,7 +297,6 @@ class Axial_Spatial_Attention(nn.Module):
             self.register_buffer("attn_mask_0", None)
             self.register_buffer("attn_mask_1", None)
         
-        # Adaptive Interaction Module
         self.dwconv = nn.Sequential(
             nn.Conv2d(dim, dim, kernel_size=3, stride=1, padding=1,groups=dim),
             nn.BatchNorm2d(dim),
@@ -419,6 +418,7 @@ class Axial_Spatial_Attention(nn.Module):
         # convolution output
         conv_x = self.dwconv(v)
 
+        # Adaptive Interaction Module (AIM)
         # C-Map (before sigmoid)
         channel_map = self.channel_interaction(conv_x).permute(0, 2, 3, 1).contiguous().view(B, 1, C)
         # S-Map (before sigmoid)
@@ -460,7 +460,6 @@ class Axial_Channel_Attention(nn.Module):
         self.proj = nn.Linear(dim, dim)
         self.proj_drop = nn.Dropout(proj_drop)
 
-        # Adaptive Interaction Module
         self.dwconv = nn.Sequential(
             nn.Conv2d(dim, dim, kernel_size=3, stride=1, padding=1,groups=dim),
             nn.BatchNorm2d(dim),
@@ -509,6 +508,7 @@ class Axial_Channel_Attention(nn.Module):
         # convolution output
         conv_x = self.dwconv(v_)
 
+        # Adaptive Interaction Module (AIM)
         # C-Map (before sigmoid)
         attention_reshape = attened_x.transpose(-2,-1).contiguous().view(B, C, H, W)
         channel_map = self.channel_interaction(attention_reshape)

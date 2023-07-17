@@ -58,10 +58,11 @@ Download training and testing datasets and put them into the corresponding folde
 
 | Method | Params (M) | FLOPs (G) | Dataset  | PSNR (dB) |  SSIM  |                          Model Zoo                           |                        Visual Results                        |
 | :----- | :--------: | :-------: | :------: | :-------: | :----: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| DAT-S  |   11.21    |   203.3   | Urban100 |   27.68   | 0.8300 | [Google Drive](https://drive.google.com/drive/folders/1hb77nOTpCo9iU_jmg_izHOPRvPJujRiL?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1W-CeN2Z0e1r0rOdc3t-GcGrRV-qTGdub/view?usp=drive_link) |
-| DAT    |   14.80    |   275.8   | Urban100 |   27.87   | 0.8343 | [Google Drive](https://drive.google.com/drive/folders/1eZqgQEBQ69Vzf8afrPkvL27JHubW6o0t?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1B4zJsZaiVsu009ilTh81BV7-8Hr98BI2/view?usp=drive_link) |
+| DAT-S  |   11.21    |   203.3   | Urban100 |   27.68   | 0.8300 | [Google Drive](https://drive.google.com/drive/folders/1hM0v3fUg5u6GjkI7dduxShyGgGfEwQXO?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1x1ixMswxw5w-zeZ_Rap5Nk4Tr46MIjAw/view?usp=drive_link) |
+| DAT    |   14.80    |   275.8   | Urban100 |   27.87   | 0.8343 | [Google Drive](https://drive.google.com/drive/folders/14VG5mw5ie8RrR4jjypeHynXDZYWL8w-r?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1K43CTsXpoX5St5fed4kEW9gu2KMR6hLu/view?usp=drive_link) |
+| DAT-2  |   11.21    |  216.93   | Urban100 |   27.86   | 0.8341 | [Google Drive](https://drive.google.com/drive/folders/1yV9LMhr2tYM_eHEIVY4Jw9X3bWGgorbD?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1TQRZIg8at5HX87OCu3GYytZhYGperkuN/view?usp=drive_link) |
 
-The performance is reported on Urban100 (x4, SR). The test input size of FLOPs is 128 x 128.
+The performance is reported on Urban100 (x4). The test input size of FLOPs is 128 x 128.
 
 ## Training
 
@@ -79,6 +80,11 @@ The performance is reported on Urban100 (x4, SR). The test input size of FLOPs i
   python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 basicsr/train.py -opt options/Train/train_DAT_x2.yml --launcher pytorch
   python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 basicsr/train.py -opt options/Train/train_DAT_x3.yml --launcher pytorch
   python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 basicsr/train.py -opt options/Train/train_DAT_x4.yml --launcher pytorch
+  
+  # DAT-2, input=64x64, 4 GPUs
+  python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 basicsr/train.py -opt options/Train/train_DAT_2_x2.yml --launcher pytorch
+  python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 basicsr/train.py -opt options/Train/train_DAT_2_x3.yml --launcher pytorch
+  python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 basicsr/train.py -opt options/Train/train_DAT_2_x4.yml --launcher pytorch
   ```
 
 - The training experiment is in `experiments/`.
@@ -87,9 +93,9 @@ The performance is reported on Urban100 (x4, SR). The test input size of FLOPs i
 
 - Download the pre-trained [models](https://drive.google.com/drive/folders/1iBdf_-LVZuz_PAbFtuxSKd_11RL1YKxM?usp=drive_link) and place them in `experiments/pretrained_models/`.
 
-  We provide pre-trained models for image SR: DAT-S and DAT (x2, x3, x4).
+  We provide pre-trained models for image SR: DAT-S, DAT, and DAT-2 (x2, x3, x4).
 
-- Download [testing](https://ufile.io/6ek67nf8) (Set5, Set14, BSD100, Urban100, Manga109) datasets, place them in `datasets/`.
+- Download [testing](https://drive.google.com/file/d/1yMbItvFKVaCT93yPWmlP3883XtJ-wSee/view?usp=sharing) (Set5, Set14, BSD100, Urban100, Manga109) datasets, place them in `datasets/`.
 
 - Run the following scripts. The testing configuration is in `options/test/`.
 
@@ -104,6 +110,11 @@ The performance is reported on Urban100 (x4, SR). The test input size of FLOPs i
   python basicsr/test.py -opt options/Test/test_DAT_x2.yml
   python basicsr/test.py -opt options/Test/test_DAT_x3.yml
   python basicsr/test.py -opt options/Test/test_DAT_x4.yml
+  
+  # DAT-2, reproduces results in Table 1 of the supplementary material
+  python basicsr/test.py -opt options/Test/test_DAT_2_x2.yml
+  python basicsr/test.py -opt options/Test/test_DAT_2_x3.yml
+  python basicsr/test.py -opt options/Test/test_DAT_2_x4.yml
   ```
 
 - The output is in `results/`.
@@ -120,13 +131,26 @@ We achieved state-of-the-art performance. Detailed results can be found in the p
 <p align="center">
   <img width="900" src="figs/Table-1.png">
 </p>
+- results in Table 1 of the supplementary material
 
+<p align="center">
+  <img width="900" src="figs/Table-2.png">
+</p>
 
 - visual comparison (x4) in the main paper
 
 <p align="center">
   <img width="900" src="figs/Figure-1.png">
 </p>
+- visual comparison (x4) in the supplementary material
+
+<p align="center">
+  <img width="900" src="figs/Figure-2.png">
+  <img width="900" src="figs/Figure-3.png">
+  <img width="900" src="figs/Figure-4.png">
+  <img width="900" src="figs/Figure-5.png">
+</p>
+
 
 
 - </details>
