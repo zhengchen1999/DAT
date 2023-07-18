@@ -131,17 +131,23 @@ We achieved state-of-the-art performance. Detailed results can be found in the p
 <p align="center">
   <img width="900" src="figs/Table-1.png">
 </p>
+
+
 - results in Table 1 of the supplementary material
 
 <p align="center">
   <img width="900" src="figs/Table-2.png">
 </p>
 
+
+
 - visual comparison (x4) in the main paper
 
 <p align="center">
   <img width="900" src="figs/Figure-1.png">
 </p>
+
+
 - visual comparison (x4) in the supplementary material
 
 <p align="center">
