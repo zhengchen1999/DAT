@@ -28,7 +28,7 @@
 ```bash
 # Clone the github repo and go to the default directory 'DAT'.
 git clone https://github.com/zhengchen1999/DAT.git
-conda create -n DAT python=3.9
+conda create -n DAT python=3.8
 conda activate DAT
 pip install -r requirements.txt
 python setup.py develop
