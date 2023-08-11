@@ -147,6 +147,7 @@ The performance is reported on Urban100 (x4). DAT-S, DAT, DAT-2: output size of 
 - Run the following scripts. The testing configuration is in `options/test/` (e.g., [test_single_x2.yml](options/Test/test_single_x2.yml)).
 
   Note 1: The default model is DAT. You can use other models like DAT-S by modifying the YML.
+
   Note 2:  You can set `use_chop: True` (default: False) in YML to chop the image for testing.
 
   ```shell
