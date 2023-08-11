@@ -46,7 +46,6 @@ class PairedImageDataset(data.Dataset):
         self.file_client = None
         self.io_backend_opt = opt['io_backend']
         self.mean = opt['mean'] if 'mean' in opt else None
-        self.task = opt['task'] if 'task' in opt else None
         self.std = opt['std'] if 'std' in opt else None
 
         self.gt_folder, self.lq_folder = opt['dataroot_gt'], opt['dataroot_lq']
@@ -63,7 +62,7 @@ class PairedImageDataset(data.Dataset):
             self.paths = paired_paths_from_meta_info_file([self.lq_folder, self.gt_folder], ['lq', 'gt'],
                                                           self.opt['meta_info_file'], self.filename_tmpl)
         else:
-            self.paths = paired_paths_from_folder([self.lq_folder, self.gt_folder], ['lq', 'gt'], self.filename_tmpl, self.task)
+            self.paths = paired_paths_from_folder([self.lq_folder, self.gt_folder], ['lq', 'gt'], self.filename_tmpl)
 
     def __getitem__(self, index):
         if self.file_client is None:
@@ -72,35 +71,14 @@ class PairedImageDataset(data.Dataset):
         scale = self.opt['scale']
 
         # Load gt and lq images. Dimension order: HWC; channel order: BGR;
-
-        if self.task == 'CAR':
-            # image range: [0, 255], int., H W 1
-            gt_path = self.paths[index]['gt_path']
-            img_bytes = self.file_client.get(gt_path, 'gt')
-            img_gt = imfrombytes(img_bytes, flag='grayscale', float32=False)
-            lq_path = self.paths[index]['lq_path']
-            img_bytes = self.file_client.get(lq_path, 'lq')
-            img_lq = imfrombytes(img_bytes, flag='grayscale', float32=False)
-            img_gt = np.expand_dims(img_gt, axis=2).astype(np.float32) / 255.
-            img_lq = np.expand_dims(img_lq, axis=2).astype(np.float32) / 255.
-
-        elif self.task == 'Color-DN':
-            gt_path = self.paths[index]['gt_path']
-            lq_path = gt_path
-            img_bytes = self.file_client.get(gt_path, 'gt')
-            img_gt = imfrombytes(img_bytes, float32=True)
-            if self.opt['phase'] != 'train':
-                np.random.seed(seed=0)
-            img_lq = img_gt + np.random.normal(0, self.noise/255., img_gt.shape)
-
-        else:
-            # image range: [0, 1], float32., H W 3
-            gt_path = self.paths[index]['gt_path']
-            img_bytes = self.file_client.get(gt_path, 'gt')
-            img_gt = imfrombytes(img_bytes, float32=True)
-            lq_path = self.paths[index]['lq_path']
-            img_bytes = self.file_client.get(lq_path, 'lq')
-            img_lq = imfrombytes(img_bytes, float32=True)
+        
+        # image range: [0, 1], float32., H W 3
+        gt_path = self.paths[index]['gt_path']
+        img_bytes = self.file_client.get(gt_path, 'gt')
+        img_gt = imfrombytes(img_bytes, float32=True)
+        lq_path = self.paths[index]['lq_path']
+        img_bytes = self.file_client.get(lq_path, 'lq')
+        img_lq = imfrombytes(img_bytes, float32=True)
 
         # augmentation for training
         if self.opt['phase'] == 'train':

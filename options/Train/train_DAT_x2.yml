@@ -1,6 +1,6 @@
 # general settings
 name: train_DAT_x2
-model_type: SRModel
+model_type: DATModle
 scale: 2
 num_gpu: auto
 manual_seed: 10

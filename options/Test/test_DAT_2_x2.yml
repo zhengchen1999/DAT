@@ -1,6 +1,6 @@
 # general settings
 name: test_DAT_2_x2
-model_type: SRModel
+model_type: DATModle
 scale: 2
 num_gpu: 1
 manual_seed: 10
@@ -80,7 +80,7 @@ path:
 val:
   save_img: True
   suffix: ~  # add suffix to saved images, if None, use exp name
-  use_chop: False
+  use_chop: False  # True to save memory, if img too large
 
   metrics:
     psnr: # metric name, can be arbitrary

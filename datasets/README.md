@@ -2,6 +2,9 @@ For training and testing, the directory structure is as follows:
 
 ```shell
 |-- datasets
+    # test your own imgs
+    |-- single
+
     # train
     |-- DF2K
         |-- HR

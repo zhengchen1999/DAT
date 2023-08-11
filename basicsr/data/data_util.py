@@ -162,7 +162,7 @@ def paired_paths_from_meta_info_file(folders, keys, meta_info_file, filename_tmp
     return paths
 
 
-def paired_paths_from_folder(folders, keys, filename_tmpl, task):
+def paired_paths_from_folder(folders, keys, filename_tmpl):
     """Generate paired paths from folders.
 
     Args:
@@ -190,10 +190,7 @@ def paired_paths_from_folder(folders, keys, filename_tmpl, task):
     paths = []
     for gt_path in gt_paths:
         basename, ext = osp.splitext(osp.basename(gt_path))
-        if task == "CAR":
-            input_name = f'{filename_tmpl.format(basename)}.jpg'
-        else:
-            input_name = f'{filename_tmpl.format(basename)}{ext}'
+        input_name = f'{filename_tmpl.format(basename)}{ext}'
         input_path = osp.join(input_folder, input_name)
         assert input_name in input_paths, f'{input_name} is not in {input_key}_paths.'
         gt_path = osp.join(gt_folder, gt_path)
