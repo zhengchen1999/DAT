@@ -25,7 +25,7 @@ datasets:
     use_shuffle: True
     num_worker_per_gpu: 12
     batch_size_per_gpu: 2
-    dataset_enlarge_ratio: 100
+    dataset_enlarge_ratio: 1
     prefetch_mode: ~
 
   val:
