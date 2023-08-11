@@ -58,11 +58,12 @@ Download training and testing datasets and put them into the corresponding folde
 
 ## Models
 
-| Method | Params (M) | FLOPs (G) | Dataset  | PSNR (dB) |  SSIM  |                          Model Zoo                           |                        Visual Results                        |
-| :----- | :--------: | :-------: | :------: | :-------: | :----: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| DAT-S  |   11.21    |   203.3   | Urban100 |   27.68   | 0.8300 | [Google Drive](https://drive.google.com/drive/folders/1hM0v3fUg5u6GjkI7dduxShyGgGfEwQXO?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1x1ixMswxw5w-zeZ_Rap5Nk4Tr46MIjAw/view?usp=drive_link) |
-| DAT    |   14.80    |   275.8   | Urban100 |   27.87   | 0.8343 | [Google Drive](https://drive.google.com/drive/folders/14VG5mw5ie8RrR4jjypeHynXDZYWL8w-r?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1K43CTsXpoX5St5fed4kEW9gu2KMR6hLu/view?usp=drive_link) |
-| DAT-2  |   11.21    |  216.93   | Urban100 |   27.86   | 0.8341 | [Google Drive](https://drive.google.com/drive/folders/1yV9LMhr2tYM_eHEIVY4Jw9X3bWGgorbD?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1TQRZIg8at5HX87OCu3GYytZhYGperkuN/view?usp=drive_link) |
+| Method    | Params (M) | FLOPs (G) | Dataset  | PSNR (dB) |  SSIM  |                          Model Zoo                           |                        Visual Results                        |
+| :-------- | :--------: | :-------: | :------: | :-------: | :----: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| DAT-S     |   11.21    |   203.3   | Urban100 |   27.68   | 0.8300 | [Google Drive](https://drive.google.com/drive/folders/1hM0v3fUg5u6GjkI7dduxShyGgGfEwQXO?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1x1ixMswxw5w-zeZ_Rap5Nk4Tr46MIjAw/view?usp=drive_link) |
+| DAT       |   14.80    |   275.8   | Urban100 |   27.87   | 0.8343 | [Google Drive](https://drive.google.com/drive/folders/14VG5mw5ie8RrR4jjypeHynXDZYWL8w-r?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1K43CTsXpoX5St5fed4kEW9gu2KMR6hLu/view?usp=drive_link) |
+| DAT-2     |   11.21    |  216.93   | Urban100 |   27.86   | 0.8341 | [Google Drive](https://drive.google.com/drive/folders/1yV9LMhr2tYM_eHEIVY4Jw9X3bWGgorbD?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1TQRZIg8at5HX87OCu3GYytZhYGperkuN/view?usp=drive_link) |
+| DAT-light |            |           | Urban100 |           |        | [Google Drive](https://drive.google.com/drive/folders/105JRMN5VJbJ7EMQJdqmhDVMAFCaKYDl8?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1xKxK6_UcqAWK2m5znQX_LssWndmN-End/view?usp=drive_link) |
 
 The performance is reported on Urban100 (x4). The test input size of FLOPs is 128 x 128.
 
@@ -87,6 +88,11 @@ The performance is reported on Urban100 (x4). The test input size of FLOPs is 12
   python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 basicsr/train.py -opt options/Train/train_DAT_2_x2.yml --launcher pytorch
   python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 basicsr/train.py -opt options/Train/train_DAT_2_x3.yml --launcher pytorch
   python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 basicsr/train.py -opt options/Train/train_DAT_2_x4.yml --launcher pytorch
+  
+  # DAT-light, input=64x64, 4 GPUs
+  python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 basicsr/train.py -opt options/Train/train_DAT_light_x2.yml --launcher pytorch
+  python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 basicsr/train.py -opt options/Train/train_DAT_light_x3.yml --launcher pytorch
+  python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 basicsr/train.py -opt options/Train/train_DAT_light_x4.yml --launcher pytorch
   ```
 
 - The training experiment is in `experiments/`.
@@ -97,7 +103,7 @@ The performance is reported on Urban100 (x4). The test input size of FLOPs is 12
 
 - Download the pre-trained [models](https://drive.google.com/drive/folders/1iBdf_-LVZuz_PAbFtuxSKd_11RL1YKxM?usp=drive_link) and place them in `experiments/pretrained_models/`.
 
-  We provide pre-trained models for image SR: DAT-S, DAT, and DAT-2 (x2, x3, x4).
+  We provide pre-trained models for image SR: DAT-S, DAT, DAT-2, and DAT-light (x2, x3, x4).
 
 - Download [testing](https://drive.google.com/file/d/1yMbItvFKVaCT93yPWmlP3883XtJ-wSee/view?usp=sharing) (Set5, Set14, BSD100, Urban100, Manga109) datasets, place them in `datasets/`.
 
@@ -121,6 +127,11 @@ The performance is reported on Urban100 (x4). The test input size of FLOPs is 12
   python basicsr/test.py -opt options/Test/test_DAT_2_x2.yml
   python basicsr/test.py -opt options/Test/test_DAT_2_x3.yml
   python basicsr/test.py -opt options/Test/test_DAT_2_x4.yml
+  
+  # DAT-light, reproduces results in Table 2 of the supplementary material
+  python basicsr/test.py -opt options/Test/test_DAT_light_x2.yml
+  python basicsr/test.py -opt options/Test/test_DAT_light_x3.yml
+  python basicsr/test.py -opt options/Test/test_DAT_light_x4.yml
   ```
 
 - The output is in `results/`.
@@ -166,6 +177,14 @@ We achieved state-of-the-art performance. Detailed results can be found in the p
 <p align="center">
   <img width="900" src="figs/Table-2.png">
 </p>
+
+
+- results in Table 2 of the supplementary material
+
+<p align="center">
+  <img width="900" src="figs/Table-3.png">
+</p>
+
 
 
 
