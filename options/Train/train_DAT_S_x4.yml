@@ -1,5 +1,5 @@
 # general settings
-name: test_DAT_S_x4
+name: train_DAT_S_x4
 model_type: DATModle
 scale: 4
 num_gpu: auto

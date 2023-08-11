@@ -1,7 +1,7 @@
 # general settings
-name: train_DAT_2_x3
+name: train_DAT_light_x2
 model_type: DATModle
-scale: 3
+scale: 2
 num_gpu: auto
 manual_seed: 10
 
@@ -12,12 +12,12 @@ datasets:
     name: DF2K
     type: PairedImageDataset
     dataroot_gt: datasets/DF2K/HR
-    dataroot_lq: datasets/DF2K/LR_bicubic/X3
-    filename_tmpl: '{}x3'
+    dataroot_lq: datasets/DF2K/LR_bicubic/X2
+    filename_tmpl: '{}x2'
     io_backend:
       type: disk
 
-    gt_size: 192
+    gt_size: 128
     use_hflip: True
     use_rot: True
 
@@ -33,8 +33,8 @@ datasets:
     name: Set5
     type: PairedImageDataset
     dataroot_gt: datasets/benchmark/Set5/HR
-    dataroot_lq: datasets/benchmark/Set5/LR_bicubic/X3
-    filename_tmpl: '{}x3'
+    dataroot_lq: datasets/benchmark/Set5/LR_bicubic/X2
+    filename_tmpl: '{}x2'
     io_backend:
       type: disk
 
@@ -45,36 +45,34 @@ network_g:
   in_chans: 3
   img_size: 64
   img_range: 1.
-  split_size: [8,32]
-  depth: [6,6,6,6,6,6]
-  embed_dim: 180
-  num_heads: [6,6,6,6,6,6]
+  depth: [18]
+  embed_dim: 60
+  num_heads: [6]
   expansion_factor: 2
-  resi_connection: '1conv'
+  resi_connection: '3conv'
+  split_size: [8,32]
+  upsampler: 'pixelshuffledirect'
 
 # path
 path:
-  pretrain_network_g: experiments/pretrained_models/DAT-2/DAT_2_x2.pth # save half of training time if we finetune from x2 and halve initial lr.
-  strict_load_g: False
+  pretrain_network_g: ~
+  strict_load_g: True
   resume_state: ~
 
 # training settings
 train:
   optim_g:
     type: Adam
-    # lr: !!float 2e-4
-    lr: !!float 1e-4
+    lr: !!float 2e-4
     weight_decay: 0
     betas: [0.9, 0.99]
 
   scheduler:
     type: MultiStepLR
-    # milestones: [ 250000, 400000, 450000, 475000 ]
-    milestones: [ 125000, 200000, 225000, 237500 ]
+    milestones: [250000, 400000, 450000, 475000]
     gamma: 0.5
 
-  # total_iter: 500000
-  total_iter: 250000
+  total_iter: 500000
   warmup_iter: -1  # no warm up
 
   # losses
@@ -91,7 +89,7 @@ val:
   metrics:
     psnr: # metric name, can be arbitrary
       type: calculate_psnr
-      crop_border: 3
+      crop_border: 2
       test_y_channel: True
 
 # logging settings

@@ -673,6 +673,30 @@ class Upsample(nn.Sequential):
         super(Upsample, self).__init__(*m)
 
 
+class UpsampleOneStep(nn.Sequential):
+    """UpsampleOneStep module (the difference with Upsample is that it always only has 1conv + 1pixelshuffle)
+       Used in lightweight SR to save parameters.
+
+    Args:
+        scale (int): Scale factor. Supported scales: 2^n and 3.
+        num_feat (int): Channel number of intermediate features.
+
+    """
+
+    def __init__(self, scale, num_feat, num_out_ch, input_resolution=None):
+        self.num_feat = num_feat
+        self.input_resolution = input_resolution
+        m = []
+        m.append(nn.Conv2d(num_feat, (scale**2) * num_out_ch, 3, 1, 1))
+        m.append(nn.PixelShuffle(scale))
+        super(UpsampleOneStep, self).__init__(*m)
+
+    def flops(self):
+        h, w = self.input_resolution
+        flops = h * w * self.num_feat * 3 * 9
+        return flops
+
+
 @ARCH_REGISTRY.register()
 class DAT(nn.Module):
     """ Dual Aggregation Transformer
@@ -715,6 +739,7 @@ class DAT(nn.Module):
                 upscale=2,
                 img_range=1.,
                 resi_connection='1conv',
+                upsampler='pixelshuffle',
                 **kwargs):
         super().__init__()
 
@@ -728,6 +753,7 @@ class DAT(nn.Module):
         else:
             self.mean = torch.zeros(1, 1, 1, 1)
         self.upscale = upscale
+        self.upsampler = upsampler
 
         # ------------------------- 1, Shallow Feature Extraction ------------------------- #
         self.conv_first = nn.Conv2d(num_in_ch, embed_dim, 3, 1, 1)
@@ -779,10 +805,16 @@ class DAT(nn.Module):
                 nn.Conv2d(embed_dim // 4, embed_dim, 3, 1, 1))
 
         # ------------------------- 3, Reconstruction ------------------------- #
-        self.conv_before_upsample = nn.Sequential(
+        if self.upsampler == 'pixelshuffle':
+            # for classical SR
+            self.conv_before_upsample = nn.Sequential(
                 nn.Conv2d(embed_dim, num_feat, 3, 1, 1), nn.LeakyReLU(inplace=True))
-        self.upsample = Upsample(upscale, num_feat)
-        self.conv_last = nn.Conv2d(num_feat, num_out_ch, 3, 1, 1)
+            self.upsample = Upsample(upscale, num_feat)
+            self.conv_last = nn.Conv2d(num_feat, num_out_ch, 3, 1, 1)
+        elif self.upsampler == 'pixelshuffledirect':
+            # for lightweight SR (to save parameters)
+            self.upsample = UpsampleOneStep(upscale, embed_dim, num_out_ch,
+                                            (img_size, img_size))
 
         self.apply(self._init_weights)
 
@@ -813,10 +845,17 @@ class DAT(nn.Module):
         self.mean = self.mean.type_as(x)
         x = (x - self.mean) * self.img_range
 
-        x = self.conv_first(x)
-        x = self.conv_after_body(self.forward_features(x)) + x
-        x = self.conv_before_upsample(x)
-        x = self.conv_last(self.upsample(x))
+        if self.upsampler == 'pixelshuffle':
+            # for image SR
+            x = self.conv_first(x)
+            x = self.conv_after_body(self.forward_features(x)) + x
+            x = self.conv_before_upsample(x)
+            x = self.conv_last(self.upsample(x))
+        elif self.upsampler == 'pixelshuffledirect':
+            # for lightweight SR
+            x = self.conv_first(x)
+            x = self.conv_after_body(self.forward_features(x)) + x
+            x = self.upsample(x)
 
         x = x / self.img_range + self.mean
         return x
