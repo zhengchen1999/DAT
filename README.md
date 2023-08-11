@@ -58,14 +58,14 @@ Download training and testing datasets and put them into the corresponding folde
 
 ## Models
 
-| Method    | Params (M) | FLOPs (G) | Dataset  | PSNR (dB) |  SSIM  |                          Model Zoo                           |                        Visual Results                        |
-| :-------- | :--------: | :-------: | :------: | :-------: | :----: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| DAT-S     |   11.21    |   203.3   | Urban100 |   27.68   | 0.8300 | [Google Drive](https://drive.google.com/drive/folders/1hM0v3fUg5u6GjkI7dduxShyGgGfEwQXO?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1x1ixMswxw5w-zeZ_Rap5Nk4Tr46MIjAw/view?usp=drive_link) |
-| DAT       |   14.80    |   275.8   | Urban100 |   27.87   | 0.8343 | [Google Drive](https://drive.google.com/drive/folders/14VG5mw5ie8RrR4jjypeHynXDZYWL8w-r?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1K43CTsXpoX5St5fed4kEW9gu2KMR6hLu/view?usp=drive_link) |
-| DAT-2     |   11.21    |  216.93   | Urban100 |   27.86   | 0.8341 | [Google Drive](https://drive.google.com/drive/folders/1yV9LMhr2tYM_eHEIVY4Jw9X3bWGgorbD?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1TQRZIg8at5HX87OCu3GYytZhYGperkuN/view?usp=drive_link) |
-| DAT-light |            |           | Urban100 |           |        | [Google Drive](https://drive.google.com/drive/folders/105JRMN5VJbJ7EMQJdqmhDVMAFCaKYDl8?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1xKxK6_UcqAWK2m5znQX_LssWndmN-End/view?usp=drive_link) |
+| Method    | Params | FLOPs (G) | Dataset  | PSNR (dB) |  SSIM  |                          Model Zoo                           |                        Visual Results                        |
+| :-------- | :----: | :-------: | :------: | :-------: | :----: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| DAT-S     | 11.21M |   203.3   | Urban100 |   27.68   | 0.8300 | [Google Drive](https://drive.google.com/drive/folders/1hM0v3fUg5u6GjkI7dduxShyGgGfEwQXO?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1x1ixMswxw5w-zeZ_Rap5Nk4Tr46MIjAw/view?usp=drive_link) |
+| DAT       | 14.80M |   275.8   | Urban100 |   27.87   | 0.8343 | [Google Drive](https://drive.google.com/drive/folders/14VG5mw5ie8RrR4jjypeHynXDZYWL8w-r?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1K43CTsXpoX5St5fed4kEW9gu2KMR6hLu/view?usp=drive_link) |
+| DAT-2     | 11.21M |  216.93   | Urban100 |   27.86   | 0.8341 | [Google Drive](https://drive.google.com/drive/folders/1yV9LMhr2tYM_eHEIVY4Jw9X3bWGgorbD?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1TQRZIg8at5HX87OCu3GYytZhYGperkuN/view?usp=drive_link) |
+| DAT-light |  573K  |   49.69   | Urban100 |   26.64   | 0.8033 | [Google Drive](https://drive.google.com/drive/folders/105JRMN5VJbJ7EMQJdqmhDVMAFCaKYDl8?usp=drive_link) | [Google Drive](https://drive.google.com/file/d/1xKxK6_UcqAWK2m5znQX_LssWndmN-End/view?usp=drive_link) |
 
-The performance is reported on Urban100 (x4). The test input size of FLOPs is 128 x 128.
+The performance is reported on Urban100 (x4). DAT-S, DAT, DAT-2: output size of FLOPs is 3×512×512. DAT-light: output size of FLOPs is 3×1280×720. 
 
 ## Training
 
