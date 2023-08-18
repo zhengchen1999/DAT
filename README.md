@@ -1,6 +1,6 @@
 # Dual Aggregation Transformer for Image Super-Resolution
 
-[Zheng Chen](https://scholar.google.com/citations?user=zssRkBAAAAAJ), [Yulun Zhang](http://yulunzhang.com/), [Jinjin Gu](https://www.jasongt.com/), [Linghe Kong](https://www.cs.sjtu.edu.cn/~linghe.kong/), [Xiaokang Yang](https://scholar.google.com/citations?user=yDEavdMAAAAJ&hl), and [Fisher Yu](https://www.yf.io/), "Dual Aggregation Transformer for Image Super-Resolution", ICCV, 2023
+[Zheng Chen](https://zhengchen1999.github.io/), [Yulun Zhang](http://yulunzhang.com/), [Jinjin Gu](https://www.jasongt.com/), [Linghe Kong](https://www.cs.sjtu.edu.cn/~linghe.kong/), [Xiaokang Yang](https://scholar.google.com/citations?user=yDEavdMAAAAJ&hl), and [Fisher Yu](https://www.yf.io/), "Dual Aggregation Transformer for Image Super-Resolution", ICCV, 2023
 
 [[arXiv](http://arxiv.org/abs/2308.03364)] [[supplementary material](https://github.com/zhengchen1999/DAT/releases)] [[visual results](https://drive.google.com/drive/folders/1ZMaZyCer44ZX6tdcDmjIrc_hSsKoMKg2?usp=drive_link)] [[pretrained models](https://drive.google.com/drive/folders/1iBdf_-LVZuz_PAbFtuxSKd_11RL1YKxM?usp=drive_link)]
 
