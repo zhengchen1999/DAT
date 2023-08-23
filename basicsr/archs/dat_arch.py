@@ -246,8 +246,9 @@ class Spatial_Attention(nn.Module):
         return x
 
 
-class Axial_Spatial_Attention(nn.Module):
-    """ Axial Spatial Self-Attention
+class Adaptive_Spatial_Attention(nn.Module):
+    # The implementation builds on CAT code https://github.com/Zhengchen1999/CAT
+    """ Adaptive Spatial Self-Attention
     Args:
         dim (int): Number of input channels.
         num_heads (int): Number of attention heads. Default: 6
@@ -439,9 +440,9 @@ class Axial_Spatial_Attention(nn.Module):
         return x
 
 
-class Axial_Channel_Attention(nn.Module):
+class Adaptive_Channel_Attention(nn.Module):
     # The implementation builds on XCiT code https://github.com/facebookresearch/xcit
-    """ Axial Channel Self-Attention
+    """ Adaptive Channel Self-Attention
     Args:
         dim (int): Number of input channels.
         num_heads (int): Number of attention heads. Default: 6
@@ -538,13 +539,13 @@ class DATB(nn.Module):
 
         if b_idx % 2 == 0:
             # DSTB
-            self.attn = Axial_Spatial_Attention(
+            self.attn = Adaptive_Spatial_Attention(
                 dim, num_heads=num_heads, reso=reso, split_size=split_size, shift_size=shift_size, qkv_bias=qkv_bias, qk_scale=qk_scale,
                 drop=drop, attn_drop=attn_drop, rg_idx=rg_idx, b_idx=b_idx
             )
         else:
             # DCTB
-            self.attn = Axial_Channel_Attention(
+            self.attn = Adaptive_Channel_Attention(
                 dim, num_heads=num_heads, qkv_bias=qkv_bias, qk_scale=qk_scale, attn_drop=attn_drop,
                 proj_drop=drop
             )
