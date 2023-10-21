@@ -6,7 +6,7 @@
 
 #### 🔥🔥🔥 News
 
-- **2023-09-17:** The [chaiNNer](https://github.com/chaiNNer-org/chaiNNer) and the [neosr](https://github.com/muslll/neosr) add DAT support. Additional trained DAT models are available in [OpenMMLab](https://openmodeldb.info/?sort=date-desc&t=arch%3Adat) (#11). Thank [Phhofm](https://github.com/Phhofm) for the implementation!
+- **2023-09-17:** The [chaiNNer](https://github.com/chaiNNer-org/chaiNNer) and the [neosr](https://github.com/muslll/neosr) add DAT support. Additional trained DAT models are available in [OpenMMLab](https://openmodeldb.info/?sort=date-desc&t=arch%3Adat) ([#11](https://github.com/zhengchen1999/DAT/issues/11)). Thank [Phhofm](https://github.com/Phhofm)!
 - **2023-07-16:** This repo is released.
 - **2023-07-14:** DAT is accepted at ICCV 2023. 🎉🎉🎉
 
