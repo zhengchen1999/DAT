@@ -4,6 +4,12 @@
 
 [[arXiv](http://arxiv.org/abs/2308.03364)] [[supplementary material](https://github.com/zhengchen1999/DAT/releases)] [[visual results](https://drive.google.com/drive/folders/1ZMaZyCer44ZX6tdcDmjIrc_hSsKoMKg2?usp=drive_link)] [[pretrained models](https://drive.google.com/drive/folders/1iBdf_-LVZuz_PAbFtuxSKd_11RL1YKxM?usp=drive_link)]
 
+#### 🔥🔥🔥 News
+
+- **2023-09-17:** The [chaiNNer](https://github.com/chaiNNer-org/chaiNNer) and the [neosr](https://github.com/muslll/neosr) add DAT support. Additional trained DAT models are available in [OpenMMLab](https://openmodeldb.info/?sort=date-desc&t=arch%3Adat) (#11). Thank [Phhofm](https://github.com/Phhofm) for the implementation!
+- **2023-07-16:** This repo is released.
+- **2023-07-14:** DAT is accepted at ICCV 2023. 🎉🎉🎉
+
 ---
 
 > **Abstract:** *Transformer has recently gained considerable popularity in low-level vision tasks, including image super-resolution (SR). These networks utilize self-attention along different dimensions, spatial or channel, and achieve impressive performance. This inspires us to combine the two dimensions in Transformer for a more powerful representation capability. Based on the above idea, we propose a novel Transformer model, Dual Aggregation Transformer (DAT), for image SR. Our DAT aggregates features across spatial and channel dimensions, in the inter-block and intra-block dual manner. Specifically, we alternately apply spatial and channel self-attention in consecutive Transformer blocks. The alternate strategy enables DAT to capture the global context and realize inter-block feature aggregation. Furthermore, we propose the adaptive interaction module (AIM) and the spatial-gate feed-forward network (SGFN) to achieve intra-block feature aggregation. AIM complements two self-attention mechanisms from corresponding dimensions. Meanwhile, SGFN introduces additional non-linear spatial information in the feed-forward network. Extensive experiments show that our DAT surpasses current methods.* 
