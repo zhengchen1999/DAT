@@ -1,6 +1,6 @@
 # general settings
 name: test_DAT_S_x3
-model_type: DATModle
+model_type: DATModel
 scale: 3
 num_gpu: 1
 manual_seed: 10

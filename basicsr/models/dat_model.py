@@ -6,7 +6,7 @@ from basicsr.models.sr_model import SRModel
 
 
 @MODEL_REGISTRY.register()
-class DATModle(SRModel):
+class DATModel(SRModel):
 
     def test(self):
         self.use_chop = self.opt['val']['use_chop'] if 'use_chop' in self.opt['val'] else False

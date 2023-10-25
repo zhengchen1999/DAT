@@ -1,6 +1,6 @@
 # general settings
 name: train_DAT_light_x4
-model_type: DATModle
+model_type: DATModel
 scale: 4
 num_gpu: auto
 manual_seed: 10
