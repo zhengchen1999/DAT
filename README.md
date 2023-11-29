@@ -168,7 +168,7 @@ The performance is reported on Urban100 (x4). DAT-S, DAT, DAT-2: output size of 
 We achieved state-of-the-art performance. Detailed results can be found in the paper. All visual results of DAT can be downloaded [here](https://drive.google.com/drive/folders/1ZMaZyCer44ZX6tdcDmjIrc_hSsKoMKg2?usp=drive_link).
 
 <details>
-<summary>Click to expan</summary>
+<summary>Click to expand</summary>
 
 - results in Table 2 of the main paper
 
