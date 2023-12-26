@@ -41,7 +41,7 @@ datasets:
 # network structures
 network_g:
   type: DAT
-  upscale: 2
+  upscale: 3
   in_chans: 3
   img_size: 64
   img_range: 1.
