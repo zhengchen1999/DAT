@@ -646,7 +646,7 @@ class ResidualGroup(nn.Module):
                 x = checkpoint.checkpoint(blk, x, x_size)
             else:
                 x = blk(x, x_size)
-        x = rearrange(x, "b (h w) c -> b c h w", h=H, w=W)
+        x = rearrange(x, "b (h w) c -> b c h w", h=H, w=W).contiguous()
         x = self.conv(x)
         x = rearrange(x, "b c h w -> b (h w) c")
         x = res + x
@@ -835,7 +835,7 @@ class DAT(nn.Module):
         for layer in self.layers:
             x = layer(x, x_size)
         x = self.norm(x)
-        x = rearrange(x, "b (h w) c -> b c h w", h=H, w=W)
+        x = rearrange(x, "b (h w) c -> b c h w", h=H, w=W).contiguous()
 
         return x
 
